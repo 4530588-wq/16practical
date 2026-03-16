@@ -82,5 +82,33 @@ public class Main{
           br.close();
           return wordList.toArray(new String[0]);
      }
+     public static void main(String[] args) throws IOException{
+          DecimalFormat df = new DecimalFormat("0.0000");
+          String filename = "C:\\Users\\Cscience1\\Documents\\15practical.zip\\16practical\\ulysses (1).numbered";
+          String[] words = readWordsFromFile(filename);
+          int N = words.length;
+          heap = words.clone();
+          size = N;
+          long start1 = System.nanoTime();
+          buildBottomUp();
+          heapSort();
+          long end1 = System.nanoTime();
+          double bottomTime = (end1-start1)/1e6;
+          long start2 = System.nanoTime();
+          buildTopDown(words);
+          heapSort();
+          long end2 = System.nanoTime();
+          double topTime = (end2-start2)/1e6;
+          System.out.println("Number of words: " + N);
+          System.out.println("Bottom-up heap: " + df.format(bottomTime) + " ms");
+          System.out.println("Top-down heap:  " + df.format(topTime) + " ms");
 
-}
+          // Optional: first 50 sorted words
+          System.out.println("\nFirst 50 sorted words:");
+          for(int i = 0; i < Math.min(50, heap.length); i++){
+               System.out.print(heap[i] + " ");
+          }
+          System.out.println();
+     }
+     }
+
