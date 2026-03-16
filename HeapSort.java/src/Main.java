@@ -43,4 +43,15 @@ public class Main{
                }
           }
      }
+     static void buildTopDown(String[] words){
+          heap = new String[words.length];
+          size = 0;
+          for(int i = 0;i< words.length;i++ ){
+               insert(words[i],size);
+               size++;
+          }
+     }
+     static void heapSort(){
+          
+     }
 }
