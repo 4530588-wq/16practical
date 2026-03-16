@@ -1,17 +1,19 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.text.DateFormat;
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
-    }
+public class Main{
+     static String[] heap;
+     static int size;
+     static void swap(int i,int j){
+          String temp = heap[i];
+          heap[i] = heap[j];
+          heap[j] = temp;
+     }
+     static void heapifyDown(int i){
+          int left = 2*i +1;
+          int right = 2*i +2;
+          int largest = i;
+          if(left < size && heap[left].compareTo(heap[largest]) > 0){
+               largest = left;
+          }
+     }
 }
