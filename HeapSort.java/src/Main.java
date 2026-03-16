@@ -29,6 +29,18 @@ public class Main{
           }
      }
      static void insert(String word,int index){
-          
+          heap[index] = word;
+
+          int i = index;
+          while(i>0){
+               int parent = (i -1)/2;
+               if(heap[i].compareTo(heap[parent]) >0){
+                    swap(i,parent);
+                    i = parent;
+               }
+               else{
+                    break;
+               }
+          }
      }
 }
