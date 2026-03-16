@@ -1,4 +1,7 @@
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.io.*;
+import java.util.*;
 
 public class Main{
      static String[] heap;
@@ -52,6 +55,32 @@ public class Main{
           }
      }
      static void heapSort(){
-          
+          int originalSize = size;
+          for(int i = size -1;i>0;i--){
+               swap(0,i);
+               size--;
+               heapifyDown(0);
+          }
+          size = originalSize;
      }
+     static String[] readWordsFromFile(String filename) throws IOException {
+          List<String> wordList = new ArrayList<>();
+          BufferedReader br = new BufferedReader(new FileReader(filename));
+          String line;
+
+          while((line = br.readLine()) != null){
+               line = line.trim();
+               if(!line.isEmpty()){
+                    String[] parts = line.split("\\s+");
+                    for(String w : parts){
+                         w = w.replaceAll("[^a-zA-Z]", "");
+                         if(!w.isEmpty())
+                              wordList.add(w.toLowerCase());
+                    }
+               }
+          }
+          br.close();
+          return wordList.toArray(new String[0]);
+     }
+
 }
