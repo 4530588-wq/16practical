@@ -15,5 +15,20 @@ public class Main{
           if(left < size && heap[left].compareTo(heap[largest]) > 0){
                largest = left;
           }
+          if(right < size && heap[right].compareTo(heap[largest]) > 0){
+               largest = right;
+          }
+          if(largest != i){
+               swap(i,largest);
+               heapifyDown(largest);
+          }
+     }
+     static void buildBottomUp(){
+          for(int i=size/2 -1 ;i>0 ;i--){
+               heapifyDown(i);
+          }
+     }
+     static void insert(String word,int index){
+          
      }
 }
